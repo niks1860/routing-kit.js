@@ -1,0 +1,40 @@
+{
+  "name": "@repo/core",
+  "version": "1.0.0",
+  "description": "A set of wasm modules compiled from original c++ RoutintKit library",
+  "author": "Nikunj Dhorajiya",
+  "license": "Apache-2.0",
+  "homepage": "https://github.com/niks1860/routing-kit.js#readme",
+  "keywords": [
+    "routing-kit",
+    "graph",
+    "dijkstra",
+    "pathfinding"
+  ],
+  "type": "commonjs",
+  "main": "./dist/lib/index.js",
+  "module": "./dist/lib/index.esm.js",
+  "exports": {
+    ".": {
+      "types": "./dist/lib/index.d.ts",
+      "import": "./dist/lib/index.mjs",
+      "default": "./dist/lib/index.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "dist/lib/*",
+    "dist/umd/*",
+    "src"
+  ],
+  "scripts": {
+    "install": "napa",
+    "build:peer": "./build.sh"
+  },
+  "napa": {
+    "routing-kit": "git+https://github.com/RoutingKit/RoutingKit.git"
+  },
+  "devDependencies": {
+    "napa": "^3.0.0"
+  }
+}

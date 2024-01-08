@@ -1,0 +1,19 @@
+{
+    "configurations": [
+        {
+            "name": "Linux",
+            "includePath": [
+                "${workspaceFolder}/**",
+                "${workspaceFolder}/packages/core/node_modules/routing-kit/include",
+                "${workspaceFolder}/packages/core/include",
+                "${EMSDK_DIR}/upstream/emscripten/system/include"
+            ],
+            "defines": [],
+            "compilerPath": "/usr/local/emsdk/upstream/bin/clang",
+            "cStandard": "c17",
+            "cppStandard": "c++17",
+            "intelliSenseMode": "linux-clang-arm64"
+        }
+    ],
+    "version": 4
+}
