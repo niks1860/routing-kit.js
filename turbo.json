@@ -1,10 +1,13 @@
 {
   "$schema": "https://turbo.build/schema.json",
   "globalDependencies": ["**/.env.*local"],
+  "globalEnv": ["NODE_ENV", "BABEL_ENV"],
   "pipeline": {
     "build": {
+      "inputs": ["./scripts/*.js"],
       "dependsOn": ["^build"],
-      "outputs": [".next/**", "!.next/cache/**"]
+      "outputs": [".next/**", "!.next/cache/**"],
+      "env": ["NODE_ENV", "BABEL_ENV"]
     },
     "lint": {
       "dependsOn": ["^lint"]

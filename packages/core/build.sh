@@ -7,15 +7,17 @@ export LDFLAGS="${OPTIMIZE} Wall -DNDEBUG -march=native -ffast-math -std=c++11 -
 export CFLAGS="${OPTIMIZE}"
 export CXXFLAGS="${OPTIMIZE}"
 
-rm -rf build
-mkdir -p build
+output_dir="wasm"
+input_dir="bindings"
+
+mkdir -p $output_dir
 
 export EMCC_SKIP_SANITY_CHECK=1
 export PEER=node_modules/routing-kit
 
 echo "Compiling CCH"
 (
-em++ -I${PEER}/include -Iinclude \
+em++ -I${PEER}/include -I$input_dir/include \
   ${OPTIMIZE} \
   --no-entry \
   --bind \
@@ -27,8 +29,9 @@ em++ -I${PEER}/include -Iinclude \
   -s MALLOC=emmalloc \
   -s MODULARIZE=1 \
   -s EXPORT_ES6=1 \
-  -o ./build/cch.js \
-  ./src/cch.cpp \
+  --extern-pre-js ./$output_dir/chh-pre.js \
+  -o ./$output_dir/cch.js \
+  ./$input_dir/cch.cpp \
   $PEER/src/timer.cpp \
   $PEER/src/graph_util.cpp \
   $PEER/src/bit_select.cpp \
@@ -44,7 +47,7 @@ echo "Compiling CCH"
 
 echo "Compiling CH"
 (
-  em++ -I${PEER}/include -Iinclude \
+  em++ -I${PEER}/include -I$input_dir/include \
     ${OPTIMIZE} \
     --no-entry \
     --bind \
@@ -56,8 +59,9 @@ echo "Compiling CH"
     -s MALLOC=emmalloc \
     -s MODULARIZE=1 \
     -s EXPORT_ES6=1 \
-    -o ./build/ch.js \
-    ./src/ch.cpp \
+    --extern-pre-js ./$output_dir/ch-pre.js \
+    -o ./$output_dir/ch.js \
+    ./$input_dir/ch.cpp \
     $PEER/src/timer.cpp \
     $PEER/src/graph_util.cpp \
     $PEER/src/bit_vector.cpp \

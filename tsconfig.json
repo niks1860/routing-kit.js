@@ -1,3 +1,5 @@
 {
-  "extends": "@repo/typescript-config/base.json"
+  "extends": "@routing-kit/typescript-config/base.json",
+  "include": ["prettier.config.cjs", "scripts"],
+  "exclude": ["node_modules"]
 }

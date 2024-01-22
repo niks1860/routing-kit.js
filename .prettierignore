@@ -1,0 +1,10 @@
+# Add files here to ignore them from prettier formatting
+
+.pnpm-store/
+**/.nx/cache
+**/node_modules
+**/build
+**/coverage
+**/dist
+**/docs
+pnpm-lock.yaml

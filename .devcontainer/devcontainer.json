@@ -12,7 +12,8 @@
 		"ghcr.io/devcontainers/features/node:1": {
 			"version": "20"
 		},
-		"ghcr.io/devcontainers-contrib/features/turborepo-npm:1": {}
+		"ghcr.io/devcontainers-contrib/features/rollup:2": {}
+
 	},
 	"containerEnv": {},
 
